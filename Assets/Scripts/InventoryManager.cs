@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
+    [SerializeField]
+    private InventorySlot[] _inventorySlots;
+
     public static InventoryManager Instance;
 
     private void Awake()
@@ -16,6 +19,11 @@ public class InventoryManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+        }
+
+        for (int i = 0; i < _inventorySlots.Length; i++)
+        {
+            _inventorySlots[i]._slotID = i;
         }
     }
 }

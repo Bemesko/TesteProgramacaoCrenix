@@ -5,6 +5,9 @@ using UnityEngine.EventSystems;
 
 public class InventorySlot : MonoBehaviour, IDropHandler
 {
+    public int _slotID;
+    public bool IsEmpty = true;
+
     private RectTransform _spriteTransform;
 
     private void Awake()
@@ -13,8 +16,25 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     }
     public void OnDrop(PointerEventData eventData)
     {
-        Debug.Log("Dropped");
-        if (eventData.pointerDrag != null)
-            eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = _spriteTransform.anchoredPosition;
+        UIGear draggedGear = eventData.pointerDrag.GetComponent<UIGear>();
+
+        Debug.Log($"Dropped in slot {_slotID}");
+
+        if (draggedGear != null && IsEmpty)
+        {
+            FillSlot(draggedGear);
+        }
+        else
+        {
+            Debug.Log("Esse slot já está cheio");
+        }
+    }
+
+    public void FillSlot(UIGear gear)
+    {
+        IsEmpty = false;
+        gear._currentUISlot = this;
+        gear.GetComponent<RectTransform>().anchoredPosition = _spriteTransform.anchoredPosition;
+        Debug.Log("FillGear");
     }
 }

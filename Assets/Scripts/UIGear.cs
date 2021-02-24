@@ -5,10 +5,14 @@ using UnityEngine.EventSystems;
 
 public class UIGear : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
+    public InventorySlot CurrentUISlot;
+    public bool WasDragSuccessful = false;
+
     [SerializeField] private Canvas _canvas;
+
+    private Vector2 _initialDragPosition;
     private RectTransform _rectTransform;
     private CanvasGroup _canvasGroup;
-    public InventorySlot _currentUISlot;
 
     private void Awake()
     {
@@ -18,10 +22,13 @@ public class UIGear : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHa
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (_currentUISlot != null)
+        if (CurrentUISlot != null)
         {
-            _currentUISlot.IsEmpty = true;
+            CurrentUISlot.IsEmpty = true;
         }
+
+        WasDragSuccessful = false;
+        _initialDragPosition = _rectTransform.anchoredPosition;
 
         _canvasGroup.alpha = .6f;
         _canvasGroup.blocksRaycasts = false;
@@ -36,5 +43,8 @@ public class UIGear : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHa
     {
         _canvasGroup.alpha = 1f;
         _canvasGroup.blocksRaycasts = true;
+
+        if (!WasDragSuccessful)
+            _rectTransform.anchoredPosition = _initialDragPosition;
     }
 }

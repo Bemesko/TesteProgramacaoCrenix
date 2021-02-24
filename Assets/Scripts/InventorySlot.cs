@@ -33,8 +33,8 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     public void FillSlot(UIGear gear)
     {
         IsEmpty = false;
-        gear._currentUISlot = this;
+        gear.CurrentUISlot = this;
+        gear.WasDragSuccessful = true;
         gear.GetComponent<RectTransform>().anchoredPosition = _spriteTransform.anchoredPosition;
-        Debug.Log("FillGear");
     }
 }

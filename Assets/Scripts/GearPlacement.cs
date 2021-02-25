@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class InventorySlot : MonoBehaviour, IDropHandler
+public class GearPlacement : MonoBehaviour, IDropHandler
 {
     public int _slotID;
     public bool IsEmpty = true;
@@ -14,6 +14,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     {
         _spriteTransform = GetComponentInChildren<RectTransform>();
     }
+
     public void OnDrop(PointerEventData eventData)
     {
         UIGear draggedGear = eventData.pointerDrag.GetComponent<UIGear>();
@@ -33,9 +34,12 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     public void FillSlot(UIGear gear)
     {
         IsEmpty = false;
-        gear.CurrentUISlot = this;
-        gear.CurrentGearPlacement = null;
+        gear.CurrentGearPlacement = this;
+        gear.CurrentUISlot = null;
         gear.WasDragSuccessful = true;
+        Debug.Log(gear.GetComponent<RectTransform>());
+        Debug.Log(gameObject.GetComponent<RectTransform>());
+        Debug.Log(_spriteTransform);
         gear.GetComponent<RectTransform>().SetParent(gameObject.GetComponent<RectTransform>());
         gear.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
     }

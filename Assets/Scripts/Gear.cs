@@ -83,4 +83,9 @@ public class Gear : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHand
                 break;
         }
     }
+
+    public void Spin()
+    {
+        Debug.Log("Spinnnnnnnnn");
+    }
 }

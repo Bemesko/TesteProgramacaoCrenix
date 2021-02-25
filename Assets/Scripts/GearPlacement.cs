@@ -11,6 +11,7 @@ public class GearPlacement : MonoBehaviour, IDropHandler
     public bool IsEmpty = true;
 
     private RectTransform _spriteTransform;
+    private Gear _currentGear;
 
     private void Awake()
     {
@@ -35,13 +36,19 @@ public class GearPlacement : MonoBehaviour, IDropHandler
 
     public void FillSlot(Gear gear)
     {
+        _currentGear = gear;
         IsEmpty = false;
-        gear.CurrentGearPlacement = this;
-        gear.CurrentUISlot = null;
-        gear.WasDragSuccessful = true;
-        gear.GetComponent<RectTransform>().SetParent(gameObject.GetComponent<RectTransform>());
-        gear.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
-        gear.ChangeGearAppearence(Gear.Appearance.PlayZone);
-        Debug.Log(GearPlacementManager.Instance.CheckIfShouldSpin());
+        _currentGear.CurrentGearPlacement = this;
+        _currentGear.CurrentUISlot = null;
+        _currentGear.WasDragSuccessful = true;
+        _currentGear.GetComponent<RectTransform>().SetParent(gameObject.GetComponent<RectTransform>());
+        _currentGear.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
+        _currentGear.ChangeGearAppearence(Gear.Appearance.PlayZone);
+        GearPlacementManager.Instance.CheckIfShouldSpin();
+    }
+
+    public Gear GetGear()
+    {
+        return _currentGear;
     }
 }

@@ -28,7 +28,7 @@ public class GearPlacementManager : MonoBehaviour
         }
     }
 
-    public bool CheckIfShouldSpin()
+    public void CheckIfShouldSpin()
     {
         bool shouldSpin = true;
 
@@ -38,6 +38,15 @@ public class GearPlacementManager : MonoBehaviour
                 shouldSpin = false;
         }
 
-        return shouldSpin;
+        if (shouldSpin)
+            SpinAllGears();
+    }
+
+    public void SpinAllGears()
+    {
+        foreach (GearPlacement _gearPlacement in _gearPlacements)
+        {
+            _gearPlacement.GetGear().Spin();
+        }
     }
 }

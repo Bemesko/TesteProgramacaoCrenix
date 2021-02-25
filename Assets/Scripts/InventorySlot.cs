@@ -38,5 +38,6 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         gear.WasDragSuccessful = true;
         gear.GetComponent<RectTransform>().SetParent(gameObject.GetComponent<RectTransform>());
         gear.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
+        gear.ChangeGearAppearence(UIGear.Appearance.UI);
     }
 }

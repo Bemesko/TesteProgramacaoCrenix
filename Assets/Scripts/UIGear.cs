@@ -1,25 +1,36 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class UIGear : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
+    public enum Appearance
+    {
+        UI,
+        PlayZone
+    }
+
     public InventorySlot CurrentUISlot;
     public GearPlacement CurrentGearPlacement;
     public bool WasDragSuccessful = false;
 
     [SerializeField] private Canvas _canvas;
+    [SerializeField] private Sprite _UIGearSprite;
+    [SerializeField] private Sprite _PZGearSprite;
 
     private Vector2 _initialDragPosition;
     private RectTransform _rectTransform;
     private Transform _beginDragParent;
     private CanvasGroup _canvasGroup;
+    private Image _gearImage;
 
     private void Awake()
     {
         _rectTransform = GetComponent<RectTransform>();
         _canvasGroup = GetComponent<CanvasGroup>();
+        _gearImage = GetComponentInChildren<Image>();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -54,6 +65,22 @@ public class UIGear : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHa
         {
             _rectTransform.SetParent(_beginDragParent);
             _rectTransform.anchoredPosition = new Vector2(0, 0);
+        }
+    }
+
+    public void ChangeGearAppearence(Appearance appearanceID)
+    {
+        switch (appearanceID)
+        {
+            case Appearance.PlayZone:
+                _gearImage.sprite = _PZGearSprite;
+                _rectTransform.localScale = new Vector3(1.5f, 1.5f, 1);
+                break;
+
+            case Appearance.UI:
+                _gearImage.sprite = _UIGearSprite;
+                _rectTransform.localScale = new Vector3(1f, 1f, 1);
+                break;
         }
     }
 }

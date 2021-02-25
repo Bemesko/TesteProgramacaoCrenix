@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class GearPlacement : MonoBehaviour, IDropHandler
@@ -37,10 +38,8 @@ public class GearPlacement : MonoBehaviour, IDropHandler
         gear.CurrentGearPlacement = this;
         gear.CurrentUISlot = null;
         gear.WasDragSuccessful = true;
-        Debug.Log(gear.GetComponent<RectTransform>());
-        Debug.Log(gameObject.GetComponent<RectTransform>());
-        Debug.Log(_spriteTransform);
         gear.GetComponent<RectTransform>().SetParent(gameObject.GetComponent<RectTransform>());
         gear.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
+        gear.ChangeGearAppearence(UIGear.Appearance.PlayZone);
     }
 }

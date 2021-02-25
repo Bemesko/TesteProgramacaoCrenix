@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class UIGear : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
+public class Gear : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     public enum Appearance
     {

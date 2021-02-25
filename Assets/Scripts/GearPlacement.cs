@@ -6,7 +6,8 @@ using UnityEngine.EventSystems;
 
 public class GearPlacement : MonoBehaviour, IDropHandler
 {
-    public int _slotID;
+    public int SlotID;
+    public bool TurnsClockwise;
     public bool IsEmpty = true;
 
     private RectTransform _spriteTransform;
@@ -18,9 +19,9 @@ public class GearPlacement : MonoBehaviour, IDropHandler
 
     public void OnDrop(PointerEventData eventData)
     {
-        UIGear draggedGear = eventData.pointerDrag.GetComponent<UIGear>();
+        Gear draggedGear = eventData.pointerDrag.GetComponent<Gear>();
 
-        Debug.Log($"Dropped in slot {_slotID}");
+        Debug.Log($"Dropped in slot {SlotID}");
 
         if (draggedGear != null && IsEmpty)
         {
@@ -32,7 +33,7 @@ public class GearPlacement : MonoBehaviour, IDropHandler
         }
     }
 
-    public void FillSlot(UIGear gear)
+    public void FillSlot(Gear gear)
     {
         IsEmpty = false;
         gear.CurrentGearPlacement = this;
@@ -40,6 +41,7 @@ public class GearPlacement : MonoBehaviour, IDropHandler
         gear.WasDragSuccessful = true;
         gear.GetComponent<RectTransform>().SetParent(gameObject.GetComponent<RectTransform>());
         gear.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
-        gear.ChangeGearAppearence(UIGear.Appearance.PlayZone);
+        gear.ChangeGearAppearence(Gear.Appearance.PlayZone);
+        Debug.Log(GearPlacementManager.Instance.CheckIfShouldSpin());
     }
 }

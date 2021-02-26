@@ -19,9 +19,4 @@ public class GearSlot : Slot, IDropHandler
         OnGearSlotFilled(this, gear);
         GearSlotManager.Instance.CheckIfAllSlotsFull();
     }
-
-    public void GetGearSpinner()
-    {
-        Debug.Log("Speen");
-    }
 }

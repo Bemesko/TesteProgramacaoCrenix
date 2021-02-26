@@ -22,10 +22,6 @@ public class Slot : MonoBehaviour, IDropHandler
         {
             FillSlot(draggedGear);
         }
-        else
-        {
-            Debug.Log("Esse slot já está cheio");
-        }
     }
 
     public virtual void FillSlot(Gear gear)

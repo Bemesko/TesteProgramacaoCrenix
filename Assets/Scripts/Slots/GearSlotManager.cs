@@ -42,12 +42,4 @@ public class GearSlotManager : MonoBehaviour
 
         OnAllSlotsFilled(allSlotsFull);
     }
-
-    public void SpinAllGears()
-    {
-        foreach (GearSlot _gearSlot in _gearSlots)
-        {
-            _gearSlot.GetGearSpinner();
-        }
-    }
 }

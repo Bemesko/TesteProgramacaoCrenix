@@ -29,7 +29,8 @@ public class GearDragNDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
 
     private void OnDisable()
     {
-
+        GearSlot.OnGearSlotFilled -= DropInGearSlot;
+        InventorySlot.OnUISlotFilled -= DropInInventorySlot;
     }
 
     public void OnBeginDrag(PointerEventData eventData)

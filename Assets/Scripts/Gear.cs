@@ -23,6 +23,8 @@ public class Gear : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHand
     private Vector2 _initialDragPosition;
     private RectTransform _rectTransform;
     private Transform _beginDragParent;
+    private GearPlacement _beginDragPlacement;
+    private InventorySlot _beginDragInventorySlot;
     private CanvasGroup _canvasGroup;
     private Image _gearImage;
     private Animator _gearAnimator;
@@ -35,18 +37,33 @@ public class Gear : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHand
         _gearAnimator = GetComponentInChildren<Animator>();
     }
 
+    private void OnEnable()
+    {
+        GearPlacementManager.OnSlotsFilled += SetGearSpin;
+    }
+
+    private void OnDisable()
+    {
+        GearPlacementManager.OnSlotsFilled -= SetGearSpin;
+    }
+
     public void OnBeginDrag(PointerEventData eventData)
     {
+        _beginDragParent = _rectTransform.parent;
+        _beginDragInventorySlot = CurrentUISlot;
+        _beginDragPlacement = CurrentGearPlacement;
+
         if (CurrentUISlot != null)
             CurrentUISlot.IsEmpty = true;
 
         if (CurrentGearPlacement != null)
             CurrentGearPlacement.IsEmpty = true;
 
+        GearPlacementManager.Instance.CheckIfAllSlotsFull();
+
         WasDragSuccessful = false;
         _initialDragPosition = _rectTransform.anchoredPosition;
 
-        _beginDragParent = _rectTransform.parent;
         _rectTransform.SetParent(_canvas.GetComponent<RectTransform>());
 
         _canvasGroup.alpha = .6f;
@@ -65,9 +82,17 @@ public class Gear : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHand
 
         if (!WasDragSuccessful)
         {
+            if (CurrentUISlot != null)
+                CurrentUISlot.IsEmpty = false;
+
+            if (CurrentGearPlacement != null)
+                CurrentGearPlacement.IsEmpty = false;
+
             _rectTransform.SetParent(_beginDragParent);
             _rectTransform.anchoredPosition = new Vector2(0, 0);
         }
+
+        GearPlacementManager.Instance.CheckIfAllSlotsFull();
     }
 
     public void ChangeGearAppearence(Appearance appearanceID)

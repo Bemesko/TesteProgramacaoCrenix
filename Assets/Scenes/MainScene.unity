@@ -257,6 +257,7 @@ GameObject:
   - component: {fileID: 90928818}
   - component: {fileID: 90928820}
   - component: {fileID: 90928819}
+  - component: {fileID: 90928821}
   m_Layer: 5
   m_Name: TextNuggetSpeech
   m_TagString: Untagged
@@ -380,6 +381,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 90928817}
   m_CullTransparentMesh: 0
+--- !u!114 &90928821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 90928817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c801a12a8e866b459bc726800c9c312, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &90953108 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 604580381076223639, guid: d213e3e36adaa9248ad47200bd4ecf83,

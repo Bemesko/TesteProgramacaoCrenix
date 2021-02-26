@@ -46,7 +46,7 @@ public class GearPlacementManager : MonoBehaviour
     {
         foreach (GearPlacement _gearPlacement in _gearPlacements)
         {
-            _gearPlacement.GetGear().Spin();
+            _gearPlacement.GetGear().SetGearSpin(true);
         }
     }
 }

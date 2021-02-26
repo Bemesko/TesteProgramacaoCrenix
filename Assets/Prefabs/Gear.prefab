@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1084737717236822516}
   - component: {fileID: 5408430013010775718}
   m_Layer: 5
-  m_Name: UIGear
+  m_Name: Gear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 5181806955609057347}
   - component: {fileID: 153911170567003523}
   - component: {fileID: 7923981189074005926}
+  - component: {fileID: 9223088539309613613}
   m_Layer: 5
   m_Name: GearGFX
   m_TagString: Untagged
@@ -151,3 +152,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &9223088539309613613
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7063719558473712865}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e9e270988e922a242bb0b3eb860f93a0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

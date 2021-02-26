@@ -25,12 +25,14 @@ public class Gear : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHand
     private Transform _beginDragParent;
     private CanvasGroup _canvasGroup;
     private Image _gearImage;
+    private Animator _gearAnimator;
 
     private void Awake()
     {
         _rectTransform = GetComponent<RectTransform>();
         _canvasGroup = GetComponent<CanvasGroup>();
         _gearImage = GetComponentInChildren<Image>();
+        _gearAnimator = GetComponentInChildren<Animator>();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -84,8 +86,8 @@ public class Gear : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHand
         }
     }
 
-    public void Spin()
+    public void SetGearSpin(bool isSpin)
     {
-        Debug.Log("Spinnnnnnnnn");
+        _gearAnimator.SetBool("IsSpinning", isSpin);
     }
 }

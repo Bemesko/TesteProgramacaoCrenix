@@ -90,4 +90,9 @@ public class Gear : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHand
     {
         _gearAnimator.SetBool("IsSpinning", isSpin);
     }
+
+    public void SetGearSpinDirection(bool isClockwise)
+    {
+        _gearAnimator.SetBool("IsClockwise", isClockwise);
+    }
 }

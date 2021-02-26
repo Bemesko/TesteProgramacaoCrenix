@@ -44,6 +44,7 @@ public class GearPlacement : MonoBehaviour, IDropHandler
         _currentGear.GetComponent<RectTransform>().SetParent(gameObject.GetComponent<RectTransform>());
         _currentGear.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
         _currentGear.ChangeGearAppearence(Gear.Appearance.PlayZone);
+        _currentGear.SetGearSpinDirection(TurnsClockwise);
         GearPlacementManager.Instance.CheckIfShouldSpin();
     }
 

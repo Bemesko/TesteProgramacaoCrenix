@@ -1215,6 +1215,11 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.9427508
       objectReference: {fileID: 0}
+    - target: {fileID: 8062223598972651155, guid: c6249f0fee7bce44fb36d49689daeaf3,
+        type: 3}
+      propertyPath: _canvas
+      value: 
+      objectReference: {fileID: 206171085}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6249f0fee7bce44fb36d49689daeaf3, type: 3}
 --- !u!1001 &592497903
@@ -1616,6 +1621,11 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8062223598972651155, guid: c6249f0fee7bce44fb36d49689daeaf3,
+        type: 3}
+      propertyPath: _canvas
+      value: 
+      objectReference: {fileID: 206171085}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6249f0fee7bce44fb36d49689daeaf3, type: 3}
 --- !u!1 &893687369
@@ -1850,6 +1860,11 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.73657894
       objectReference: {fileID: 0}
+    - target: {fileID: 8062223598972651155, guid: c6249f0fee7bce44fb36d49689daeaf3,
+        type: 3}
+      propertyPath: _canvas
+      value: 
+      objectReference: {fileID: 206171085}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6249f0fee7bce44fb36d49689daeaf3, type: 3}
 --- !u!1001 &986732285
@@ -2528,6 +2543,11 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.043376803
       objectReference: {fileID: 0}
+    - target: {fileID: 8062223598972651155, guid: c6249f0fee7bce44fb36d49689daeaf3,
+        type: 3}
+      propertyPath: _canvas
+      value: 
+      objectReference: {fileID: 206171085}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6249f0fee7bce44fb36d49689daeaf3, type: 3}
 --- !u!114 &1392046535 stripped
@@ -2878,7 +2898,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bbfc59c9af4b424086bbf02f9b4c6be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gearPlacements:
+  _gearSlots:
   - {fileID: 604580381076223639}
   - {fileID: 90953108}
   - {fileID: 1458716364}
@@ -3488,5 +3508,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8062223598972651155, guid: c6249f0fee7bce44fb36d49689daeaf3,
+        type: 3}
+      propertyPath: _canvas
+      value: 
+      objectReference: {fileID: 206171085}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6249f0fee7bce44fb36d49689daeaf3, type: 3}

@@ -3,21 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class InventorySlot : MonoBehaviour, IDropHandler
+public class Slot : MonoBehaviour, IDropHandler
 {
-    public bool IsEmpty = true;
 
+    public bool IsEmpty = true;
     private RectTransform _spriteTransform;
 
     private void Awake()
     {
         _spriteTransform = GetComponentInChildren<RectTransform>();
     }
+
     public void OnDrop(PointerEventData eventData)
     {
         Gear draggedGear = eventData.pointerDrag.GetComponent<Gear>();
 
-        if (draggedGear != null && IsEmpty)
+        if (IsEmpty)
         {
             FillSlot(draggedGear);
         }
@@ -27,14 +28,8 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         }
     }
 
-    public void FillSlot(Gear gear)
+    public virtual void FillSlot(Gear gear)
     {
-        IsEmpty = false;
-        gear.CurrentUISlot = this;
-        gear.CurrentGearPlacement = null;
-        gear.WasDragSuccessful = true;
-        gear.GetComponent<RectTransform>().SetParent(gameObject.GetComponent<RectTransform>());
-        gear.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
-        gear.ChangeGearAppearence(Gear.Appearance.UI);
+        //Isso poderia ser um método abstract mas eu não tenho 100% de certeza
     }
 }

@@ -14,12 +14,12 @@ public class NuggetSpeechBubble : MonoBehaviour
 
     private void OnEnable()
     {
-        GearPlacementManager.OnSlotsFilled += ChangeText;
+        GearSlotManager.OnAllSlotsFilled += ChangeText;
     }
 
     private void OnDisable()
     {
-        GearPlacementManager.OnSlotsFilled -= ChangeText;
+        GearSlotManager.OnAllSlotsFilled -= ChangeText;
     }
 
     void ChangeText(bool isSlotsFilled)
